@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Promille Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="./script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <link rel="stylesheet" href="style.css" />
+
+  <body>
+    <h1 style="color: #ffa500; text-align: center">Promille Calculator</h1>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-3 d-flex">a</div>
+      <div id="myInputForm" class="col-md-6" style="padding: 1.3rem">
+        <h3 class="htag">Physical Qualities</h3>
+        <div class="container text-center">
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Select Gender"
+            data-bs-toggle="buttons"
+          >
+            <label
+              class="btn btn-outline-secondary btn-gender animate__animated animate__bounceInLeft gender-male active"
+            >
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                style="display: none"
+                checked
+              />
+              Male
+            </label>
+            <label
+              class="btn btn-outline-secondary btn-gender animate__animated animate__bounceInRight gender-female"
+            >
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                style="display: none"
+              />
+              Female
+            </label>
+          </div>
+        </div>
+
+        <div class="input-group mb-2">
+          <span class="input-group-text my-label">Age</span>
+          <input
+            id="ageInput"
+            placeholder="Enter your Age"
+            type="text"
+            class="form-control input-area"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text my-label">Height (cm)</span>
+          <input
+            id="heightInput"
+            type="text"
+            class="form-control input-area"
+            placeholder="Enter your Height in cm"
+          />
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text my-label">Weight (kg)</span>
+          <input
+            id="weightInput"
+            type="text"
+            class="form-control input-area"
+            placeholder="Enter your weight in kg"
+          />
+        </div>
+
+        <h2 class="htag">Alcohol</h2>
+        <div id="result-container" class="d-none">
+          <div class="result">
+            <div class="result-label">Blood Alcohol Content (BAC)</div>
+            <div id="promille-value" class="result-value">0.08%</div>
+          </div>
+          <div class="result">
+            <div class="result-label">Time Until Sober</div>
+            <div id="sober-value" class="result-value">5 hours</div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text my-label">Beer 5% </span>
+          <select id="beerMl" class="form-select input-area">
+            <option value="355" selected>355ml</option>
+            <option value="500">500ml</option>
+            <option value="650">650ml</option>
+            <option value="1000">1L</option>
+          </select>
+          <span class="input-group-text my-label-2">Bottles</span
+          ><select id="beerSelect" class="form-select input-area-2">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text my-label">Beer 7.5% </span>
+          <select id="beerTenseMl" class="form-select input-area">
+            <option value="355">355ml</option>
+            <option value="500" selected>500ml</option>
+            <option value="650">650ml</option>
+          </select>
+
+          <span class="input-group-text my-label-2">Bottles</span>
+
+          <select id="beerTenseSelect" class="form-select input-area-2">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text my-label">Wine 12% </span>
+          <select id="wineCl" class="form-select input-area">
+            <option value="150" selected>15cl</option>
+            <option value="120">12cl</option>
+            <option value="100">10cl</option>
+          </select>
+          <span class="input-group-text my-label-2">Glasses</span
+          ><select
+            id="wineSelect"
+            class="form-select input-area-2"
+            aria-label="Default select example"
+          >
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text my-label">Whiskey 40%</span>
+
+          <select id="whiskeySingle" class="form-select input-area">
+            <option selected value="0">Single</option>
+            <option value="1">1 Single</option>
+            <option value="2">2 Singles</option>
+            <option value="3">3 Singles</option>
+            <option value="4">4 Singles</option>
+            <option value="5">5 Singles</option>
+            <option value="6">6 Singles</option>
+            <option value="7">7 Singles</option>
+            <option value="8">8 Singles</option>
+            <option value="9">9 Singles</option>
+            <option value="10">10 Singles</option>
+          </select>
+
+          <select id="whiskeyDouble" class="form-select input-area">
+            <option selected value="0">Double</option>
+            <option value="1">1 Double</option>
+            <option value="2">2 Doubles</option>
+            <option value="3">3 Doubles</option>
+            <option value="4">4 Doubles</option>
+            <option value="5">5 Doubles</option>
+            <option value="6">6 Doubles</option>
+            <option value="7">7 Doubles</option>
+            <option value="8">8 Doubles</option>
+            <option value="9">9 Doubles</option>
+            <option value="10">10 Doubles</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text my-label">Tequila 40% </span>
+          <select id="tequilaMl" class="form-select input-area">
+            <option value="20">2cl</option>
+            <option value="30" selected>3cl</option>
+            <option value="40">4cl</option>
+            <option value="50">5cl</option>
+            <option value="60">6cl</option>
+            <option value="70">7cl</option>
+          </select>
+          <span class="input-group-text my-label-2">Shots </span>
+          <select
+            id="tequila"
+            class="form-select input-area-2"
+            aria-label="Default select example"
+          >
+            <option value="0" selected>0</option>
+            <option value="1">1 Shot</option>
+            <option value="2">2 Shots</option>
+            <option value="3">3 Shots</option>
+            <option value="4">4 Shots</option>
+            <option value="5">5 Shots</option>
+            <option value="6">6 Shots</option>
+            <option value="7">7 Shots</option>
+            <option value="8">8 Shots</option>
+            <option value="9">9 Shots</option>
+            <option value="10">10 Shots</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text my-label">Time Elapsed</span>
+
+          <select id="timeSpentInput" class="form-select input-area">
+            <option value="0" selected>Hour</option>
+            <option value="0.5">0.5 Hour</option>
+            <option value="1">1 Hour</option>
+            <option value="1.5">1.5 Hour</option>
+            <option value="2">2 Hour</option>
+            <option value="2.5">2.5 Hour</option>
+            <option value="3">3 Hour</option>
+            <option value="3.5">3.5 Hour</option>
+            <option value="4">4 Hour</option>
+            <option value="4.5">4.5 Hour</option>
+            <option value="5">5 Hour</option>
+            <option value="5.5">5.5 Hour</option>
+            <option value="6">6 Hour</option>
+            <option value="6.5">6.5 Hour</option>
+            <option value="7">7 Hour</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button
+            id="calcButton"
+            type="button"
+            class="btn btn-info"
+            onclick="calculatePromille()"
+          >
+            Calculate
+          </button>
+          <div
+            id="spinner"
+            class="spinner-border text-warning"
+            role="status"
+            style="display: none; color: red"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex">a</div>
+    </div>
+    <script type="text/javascript">
+      // Get the buttons
+      var genderMale = document.querySelector(".gender-male");
+      var genderFemale = document.querySelector(".gender-female");
+      var calcButton = document.getElementById("calcButton");
+      genderMale.addEventListener("click", function () {
+        if (!genderMale.classList.contains("active")) {
+          genderMale.classList.add("active");
+          genderFemale.classList.remove("active");
+          calcButton.style.backgroundColor = "#00bfff";
+        }
+      });
+
+      genderFemale.addEventListener("click", function () {
+        if (!genderFemale.classList.contains("active")) {
+          genderFemale.classList.add("active");
+          genderMale.classList.remove("active");
+          calcButton.style.backgroundColor = "#ff69b4";
+          console.log(calcButton.style.background);
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#calcButton").click(function () {
+          // Hide the calculate button and show the spinner
+          $(this).addClass("d-none");
+          $("#spinner").addClass("d-inline-block");
+          $("#result-container").addClass("d-none");
+
+          // Simulate a 2 second delay for the calculation
+          setTimeout(function () {
+            // Hide the spinner and show the result container
+            $("#spinner").removeClass("d-inline-block");
+            $("#result-container").removeClass("d-none");
+
+            // Show the calculate button again
+
+            $("#calcButton").removeClass("d-none");
+          }, 600); // Seconds for spinner
+        });
+      });
+    </script>
+  </body>
+</html>
